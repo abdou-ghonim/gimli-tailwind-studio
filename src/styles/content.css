@@ -1,0 +1,55 @@
+/* Content script injected styles - gimli overlay */
+.gimli-overlay-highlight {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 1px !important;
+  cursor: crosshair !important;
+  position: relative;
+}
+
+.gimli-overlay-tooltip {
+  position: fixed;
+  z-index: 2147483646;
+  background: #1e293b;
+  color: #f1f5f9;
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border: 1px solid #334155;
+}
+
+.gimli-overlay-tooltip::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 12px;
+  width: 9px;
+  height: 9px;
+  background: #1e293b;
+  transform: rotate(45deg);
+  border-left: 1px solid #334155;
+  border-top: 1px solid #334155;
+}
+
+.gimli-inspector-active *,
+.gimli-inspector-active *::before,
+.gimli-inspector-active *::after {
+  cursor: crosshair !important;
+}
+
+.gimli-selection-ring {
+  outline: 2px dashed #8b5cf6 !important;
+  outline-offset: 2px !important;
+}
+
+.gimli-selected-element {
+  outline: 2px solid #8b5cf6 !important;
+  outline-offset: 2px !important;
+  background-color: rgba(139, 92, 246, 0.05) !important;
+}

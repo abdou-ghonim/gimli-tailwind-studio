@@ -1,0 +1,945 @@
+/* Gimli Tailwind Studio - Popup Styles */
+
+:root {
+  --bg: #0f1117;
+  --surface: #1a1d27;
+  --surface2: #232738;
+  --surface3: #2d3248;
+  --border: #2e3352;
+  --text: #e2e8f0;
+  --text-muted: #8892b0;
+  --text-dim: #505a77;
+  --accent: #6366f1;
+  --accent2: #818cf8;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --purple: #8b5cf6;
+  --cyan: #06b6d4;
+  --pink: #ec4899;
+  --orange: #f97316;
+  --amber: #f59e0b;
+  --green: #10b981;
+  --lime: #84cc16;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --indigo: #6366f1;
+  --violet: #8b5cf6;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --radius: 8px;
+  --radius-sm: 5px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  width: 360px;
+  min-height: 520px;
+  max-height: 680px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 99px; }
+
+/* ─── Popup shell ──────────────────────────────────────────────────────────── */
+
+.gimli-popup {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: 680px;
+  overflow: hidden;
+}
+
+/* ─── Header ───────────────────────────────────────────────────────────────── */
+
+.gimli-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 10px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.gimli-logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.gimli-logo-icon {
+  font-size: 18px;
+  filter: drop-shadow(0 0 6px rgba(99, 102, 241, 0.6));
+}
+
+.gimli-logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent2), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.3px;
+}
+
+.gimli-inspector-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-inspector-btn:hover {
+  background: var(--surface3);
+  border-color: var(--accent);
+  color: var(--accent2);
+}
+
+.gimli-inspector-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* ─── Tabs ─────────────────────────────────────────────────────────────────── */
+
+.gimli-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-shrink: 0;
+  padding: 0 8px;
+  gap: 2px;
+}
+
+.gimli-tab {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  margin-bottom: -1px;
+}
+
+.gimli-tab:hover {
+  color: var(--text);
+}
+
+.gimli-tab.active {
+  color: var(--accent2);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── Panel ────────────────────────────────────────────────────────────────── */
+
+.gimli-panel {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── Element info ─────────────────────────────────────────────────────────── */
+
+.gimli-element-info {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 11px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.gimli-tag-badge {
+  background: var(--accent);
+  color: white;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.gimli-id-badge {
+  background: var(--surface2);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.gimli-selector {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gimli-meta {
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-left: auto;
+}
+
+/* ─── Empty state ──────────────────────────────────────────────────────────── */
+
+.gimli-empty-state {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--text-muted);
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  line-height: 1.6;
+}
+
+.gimli-empty-state strong {
+  color: var(--text);
+}
+
+/* ─── Classes section ──────────────────────────────────────────────────────── */
+
+.gimli-classes-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.gimli-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.gimli-class-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.gimli-active-classes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px 10px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.gimli-class-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.1s;
+  border: 1px solid transparent;
+}
+
+.gimli-class-chip.small {
+  font-size: 9.5px;
+  padding: 1px 5px;
+}
+
+.gimli-chip-remove {
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+}
+
+.gimli-class-chip:hover {
+  opacity: 0.8;
+  transform: scale(0.97);
+}
+
+.gimli-class-chip:hover .gimli-chip-remove {
+  opacity: 1;
+}
+
+/* Category colors for chips */
+.gimli-class-chip.layout { background: rgba(99,102,241,0.15); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
+.gimli-class-chip.position { background: rgba(139,92,246,0.15); color: #c4b5fd; border-color: rgba(139,92,246,0.3); }
+.gimli-class-chip.spacing { background: rgba(6,182,212,0.15); color: #67e8f9; border-color: rgba(6,182,212,0.3); }
+.gimli-class-chip.size { background: rgba(245,158,11,0.15); color: #fcd34d; border-color: rgba(245,158,11,0.3); }
+.gimli-class-chip.flexbox { background: rgba(16,185,129,0.15); color: #6ee7b7; border-color: rgba(16,185,129,0.3); }
+.gimli-class-chip.grid { background: rgba(20,184,166,0.15); color: #5eead4; border-color: rgba(20,184,166,0.3); }
+.gimli-class-chip.typography { background: rgba(236,72,153,0.15); color: #f9a8d4; border-color: rgba(236,72,153,0.3); }
+.gimli-class-chip.colors { background: rgba(249,115,22,0.15); color: #fdba74; border-color: rgba(249,115,22,0.3); }
+.gimli-class-chip.borders { background: rgba(168,85,247,0.15); color: #d8b4fe; border-color: rgba(168,85,247,0.3); }
+.gimli-class-chip.effects { background: rgba(14,165,233,0.15); color: #7dd3fc; border-color: rgba(14,165,233,0.3); }
+.gimli-class-chip.transitions { background: rgba(100,116,139,0.15); color: #94a3b8; border-color: rgba(100,116,139,0.3); }
+.gimli-class-chip.transform { background: rgba(132,204,22,0.15); color: #bef264; border-color: rgba(132,204,22,0.3); }
+.gimli-class-chip.interactivity { background: rgba(244,63,94,0.15); color: #fda4af; border-color: rgba(244,63,94,0.3); }
+.gimli-class-chip.svg { background: rgba(124,58,237,0.15); color: #c4b5fd; border-color: rgba(124,58,237,0.3); }
+.gimli-class-chip.aspect { background: rgba(180,83,9,0.15); color: #fde68a; border-color: rgba(180,83,9,0.3); }
+.gimli-class-chip.other { background: rgba(100,116,139,0.15); color: #94a3b8; border-color: rgba(100,116,139,0.3); }
+
+/* ─── Input row ────────────────────────────────────────────────────────────── */
+
+.gimli-input-row {
+  display: flex;
+  gap: 6px;
+}
+
+.gimli-class-input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  padding: 6px 10px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.gimli-class-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+}
+
+.gimli-class-input::placeholder {
+  color: var(--text-dim);
+}
+
+.gimli-add-btn {
+  padding: 6px 12px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.gimli-add-btn:hover {
+  background: var(--accent2);
+  box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+}
+
+/* ─── Sub-tabs ─────────────────────────────────────────────────────────────── */
+
+.gimli-sub-tabs {
+  display: flex;
+  gap: 3px;
+}
+
+.gimli-sub-tab {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-sub-tab:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+.gimli-sub-tab.active {
+  background: var(--surface2);
+  border-color: var(--accent);
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+/* ─── Category pills ───────────────────────────────────────────────────────── */
+
+.gimli-category-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.gimli-category-pill {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.gimli-category-pill:hover {
+  border-color: var(--cat-color);
+  color: var(--cat-color);
+}
+
+.gimli-category-pill.active {
+  background: color-mix(in srgb, var(--cat-color) 15%, transparent);
+  border-color: var(--cat-color);
+  color: var(--cat-color);
+  font-weight: 600;
+}
+
+/* ─── Utility grid ─────────────────────────────────────────────────────────── */
+
+.gimli-utility-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 2px 0;
+}
+
+.gimli-utility-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  transition: all 0.1s;
+}
+
+.gimli-utility-btn:hover {
+  border-color: var(--cat-color, var(--accent));
+  color: var(--cat-color, var(--accent2));
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 10%, transparent);
+}
+
+.gimli-utility-btn.applied {
+  background: color-mix(in srgb, var(--cat-color, var(--accent)) 20%, transparent);
+  border-color: var(--cat-color, var(--accent));
+  color: var(--cat-color, var(--accent2));
+  font-weight: 600;
+}
+
+.gimli-check {
+  display: flex;
+  align-items: center;
+  color: var(--success);
+}
+
+.gimli-no-results {
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+/* ─── Search section ───────────────────────────────────────────────────────── */
+
+.gimli-search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gimli-search-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  padding: 7px 10px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.gimli-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+}
+
+.gimli-search-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* ─── Recent section ───────────────────────────────────────────────────────── */
+
+.gimli-recent-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.gimli-recent-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 7px 10px;
+  max-height: 70px;
+  overflow-y: auto;
+}
+
+.gimli-recent-chip {
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text-muted);
+  transition: all 0.1s;
+}
+
+.gimli-recent-chip:hover,
+.gimli-recent-chip.active {
+  border-color: var(--accent);
+  color: var(--accent2);
+  background: rgba(99,102,241,0.1);
+}
+
+/* ─── Icon buttons ─────────────────────────────────────────────────────────── */
+
+.gimli-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.gimli-icon-btn:hover {
+  background: var(--surface3);
+  color: var(--text);
+}
+
+.gimli-icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ─── Presets ──────────────────────────────────────────────────────────────── */
+
+.gimli-preset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gimli-preset-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: border-color 0.15s;
+}
+
+.gimli-preset-card:hover {
+  border-color: var(--text-dim);
+}
+
+.gimli-preset-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.gimli-preset-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.gimli-preset-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+
+.gimli-preset-classes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-bottom: 5px;
+}
+
+.gimli-preset-date {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.gimli-more-badge {
+  font-size: 9.5px;
+  color: var(--text-dim);
+  background: var(--surface2);
+  padding: 1px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+.gimli-preset-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.gimli-apply-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-apply-btn:hover {
+  background: var(--accent2);
+  box-shadow: 0 2px 8px rgba(99,102,241,0.4);
+}
+
+.gimli-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.gimli-delete-btn:hover {
+  background: rgba(239,68,68,0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ─── Buttons ──────────────────────────────────────────────────────────────── */
+
+.gimli-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-primary-btn:hover {
+  background: var(--accent2);
+  box-shadow: 0 2px 10px rgba(99,102,241,0.4);
+}
+
+.gimli-primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gimli-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-secondary-btn:hover {
+  background: var(--surface3);
+}
+
+/* ─── Export ───────────────────────────────────────────────────────────────── */
+
+.gimli-export-formats {
+  display: flex;
+  gap: 5px;
+}
+
+.gimli-format-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-format-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.gimli-format-btn.active {
+  background: rgba(99,102,241,0.1);
+  border-color: var(--accent);
+  color: var(--accent2);
+  font-weight: 600;
+}
+
+.gimli-tag-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+}
+
+.gimli-tag-selector label {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.gimli-tag-selector select {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 3px 6px;
+  outline: none;
+}
+
+.gimli-code-preview {
+  background: #0a0c12;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-height: 240px;
+}
+
+.gimli-code-block {
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: #a6e3a1;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.gimli-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 9px;
+  background: var(--success);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.gimli-copy-btn:hover {
+  background: #059669;
+  box-shadow: 0 2px 12px rgba(16,185,129,0.4);
+}
+
+/* ─── Modal ────────────────────────────────────────────────────────────────── */
+
+.gimli-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(2px);
+}
+
+.gimli-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 310px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+.gimli-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gimli-modal-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gimli-form-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.gimli-form-input {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 12px;
+  padding: 7px 10px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+.gimli-form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+}
+
+.gimli-form-input::placeholder {
+  color: var(--text-dim);
+}
+
+.gimli-modal-preview {
+  background: #0a0c12;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  font-size: 10.5px;
+}
+
+.gimli-modal-preview > span:first-child {
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.gimli-preview-classes {
+  font-family: var(--mono);
+  color: #a6e3a1;
+  word-break: break-all;
+}
+
+.gimli-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+}
