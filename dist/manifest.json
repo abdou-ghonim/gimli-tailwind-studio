@@ -5,8 +5,7 @@
   "description": "Visual Tailwind CSS editor — inspect, tweak, and export Tailwind classes on any webpage",
   "permissions": [
     "storage",
-    "activeTab",
-    "devtools_page"
+    "activeTab"
   ],
   "host_permissions": [
     "<all_urls>"
