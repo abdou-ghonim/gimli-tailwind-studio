@@ -34,6 +34,9 @@ function buildExtensionPlugin() {
 
       writeFileSync(manifestDst, JSON.stringify(manifest, null, 2))
 
+      // Chrome manifest expects popup.html — copy index.html to popup.html
+      copyFileSync(resolve(DIST, 'index.html'), resolve(DIST, 'popup.html'))
+
       const iconsDst = resolve(DIST, 'icons')
       mkdirSync(iconsDst, { recursive: true })
       for (const f of ['icon16.png', 'icon32.png', 'icon48.png', 'icon128.png']) {
@@ -62,6 +65,7 @@ export default defineConfig({
       input: {
         popup: resolve(__dirname, 'index.html'),
         options: resolve(__dirname, 'options.html'),
+        devtools: resolve(__dirname, 'devtools.html'),
         content: resolve(__dirname, 'src/content/contentScript.ts'),
         background: resolve(__dirname, 'src/background/serviceWorker.ts'),
       },

@@ -5,7 +5,8 @@
   "description": "Visual Tailwind CSS editor — inspect, tweak, and export Tailwind classes on any webpage",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "devtools_page"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -41,6 +42,7 @@
       "run_at": "document_end"
     }
   ],
+  "devtools_page": "devtools.html",
   "options_ui": {
     "page": "options.html",
     "open_in_tab": true
