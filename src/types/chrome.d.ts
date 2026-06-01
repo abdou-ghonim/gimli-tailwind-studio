@@ -1,5 +1,21 @@
 // Chrome global - permissive declaration for Chrome Extension runtime
 declare const chrome: {
+  devtools: {
+    inspectedWindow: {
+      onSelectionChanged: { addListener(callback: () => void): void }
+      eval(script: string, callback?: (result: [unknown, unknown]) => void): void
+    }
+    panels: {
+      elements: {
+        createSidebarPane(title: string, callback: (pane: {
+          setExpression(expr: string): Promise<void>
+          setHeight(height: string): void
+          setObject(obj: object): void
+          setContent(html: string): void
+        }) => void): void
+      }
+    }
+  }
   runtime: {
     sendMessage(message: unknown, callback?: (response: unknown) => void): void
     onMessage: {
